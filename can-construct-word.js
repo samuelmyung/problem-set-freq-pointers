@@ -1,3 +1,4 @@
+"use strict";
 /*
  Input: 2 strings, word and letters
  Output: Boolean value (true or false) if we can build a word with the letters
@@ -21,22 +22,24 @@ function frequencyCounter(items) {
     let curr = counter[char] || 0;
     counter[char] = curr + 1;
   }
+
   return counter;
 }
 
 function canConstructWord(word, letters) {
   const wordCounter = frequencyCounter(word);
   const lettersCounter = frequencyCounter(letters);
-  debugger;
 
   for (let key in wordCounter) {
     if (key in lettersCounter) {
       if (wordCounter[key] > lettersCounter[key]) {
         return false;
       }
+
     } else {
       return false;
     }
   }
+
   return true;
 }
